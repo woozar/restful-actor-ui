@@ -1,0 +1,35 @@
+.method {
+  margin-top: 2px;
+}
+
+.get {
+  border: 2px solid darkgreen;
+}
+
+.put {
+  border: 2px solid darkorange;
+}
+
+.post {
+  border: 2px solid darkblue;
+}
+
+.delete {
+  border: 2px solid darkred;
+}
+
+.patch {
+  border: 2px solid yellow;
+}
+
+.head {
+  border: 2px solid purple;
+}
+
+.options {
+  border: 2px solid violet;
+}
+
+.trace {
+  border: 2px solid cyan;
+}

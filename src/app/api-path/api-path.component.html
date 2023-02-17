@@ -1,0 +1,7 @@
+<mat-expansion-panel hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{ path.path }}</mat-panel-title>
+    <mat-panel-description> {{ path.description }} </mat-panel-description>
+  </mat-expansion-panel-header>
+  <app-api-methods [methods]="path.methods"></app-api-methods>
+</mat-expansion-panel>
