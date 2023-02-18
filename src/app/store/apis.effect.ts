@@ -12,7 +12,7 @@ export class ApiEffects {
       switchMap(() =>
         this.backend.loadApiSpecs().pipe(
           map((apis) => loadApisSuccess(apis)),
-          catchError(() => of(loadApisFailed))
+          catchError((e) => of(loadApisFailed(e.message)))
         )
       )
     )

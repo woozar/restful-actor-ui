@@ -28,6 +28,18 @@ export const getApiSpecs = gql`
           responses {
             code
             description
+            contents {
+              description
+              example
+              mimetype
+              schema
+            }
+            headers {
+              description
+              example
+              name
+              schema
+            }
           }
         }
       }

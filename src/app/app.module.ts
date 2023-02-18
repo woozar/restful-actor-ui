@@ -27,9 +27,11 @@ import { ApiMethodComponent } from './api-method/api-method.component';
 import { ApiMethodsComponent } from './api-methods/api-methods.component';
 import { EffectsModule } from '@ngrx/effects';
 import { ApiEffects } from './store/apis.effect';
+import { ApiResponsesComponent } from './api-responses/api-responses.component';
+import { ApiResponseComponent } from './api-response/api-response.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomeComponent, ApiPathComponent, ApiPathsComponent, ApiMethodComponent, ApiMethodsComponent],
+  declarations: [AppComponent, NavbarComponent, HomeComponent, ApiPathComponent, ApiPathsComponent, ApiMethodComponent, ApiMethodsComponent, ApiResponsesComponent, ApiResponseComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

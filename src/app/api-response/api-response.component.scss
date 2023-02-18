@@ -1,0 +1,16 @@
+.response {
+  margin-top: 2px;
+}
+
+.ok {
+  border: 2px solid darkgreen;
+}
+.forward {
+  border: 2px solid yellow;
+}
+.error {
+  border: 2px solid darkred;
+}
+.serverError {
+  border: 2px solid darkorange;
+}

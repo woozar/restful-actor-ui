@@ -24,7 +24,7 @@ export type ApiCallback = {
 };
 
 export type ApiCallbackUrl = {
-  __typenamse?: 'ApiCallbackUrl';
+  __typename?: 'ApiCallbackUrl';
   methods: Array<ApiMethod>;
   namespace: Array<Scalars['String']>;
   parent: ApiCallback;
@@ -106,7 +106,7 @@ export type ApiVariable = {
 export type HttpContent = {
   __typename?: 'HttpContent';
   description?: Maybe<Scalars['String']>;
-  example: Scalars['String'];
+  example?: Maybe<Scalars['String']>;
   mimetype: Scalars['String'];
   parent: HttpContentParent;
   schema: Scalars['String'];
@@ -117,7 +117,7 @@ export type HttpContentParent = ApiMethod | ApiResponse;
 export type HttpHeader = {
   __typename?: 'HttpHeader';
   description?: Maybe<Scalars['String']>;
-  example: Scalars['String'];
+  example?: Maybe<Scalars['String']>;
   name: Scalars['String'];
   parent: ApiResponse;
   schema: Scalars['String'];
@@ -129,6 +129,19 @@ export enum Method {
   Head = 'head',
   Post = 'post',
   Put = 'put',
+}
+
+export type Notification = {
+  __typename?: 'Notification';
+  event: NotificationEvent;
+  id: Scalars['String'];
+  message: Scalars['String'];
+};
+
+export enum NotificationEvent {
+  Created = 'Created',
+  Deleted = 'Deleted',
+  Updated = 'Updated',
 }
 
 export enum ParameterIn {
@@ -143,10 +156,16 @@ export type Query = {
   __typename?: 'Query';
   getApiSpec: ApiSpec;
   getApiSpecs: Array<ApiSpec>;
+  getNotifications: Array<Notification>;
 };
 
 export type QueryGetApiSpecArgs = {
   id: Scalars['String'];
+};
+
+export type Subscription = {
+  __typename?: 'Subscription';
+  notifications: Notification;
 };
 
 export type GetApiSpecsQueryVariables = Exact<{ [key: string]: never }>;
@@ -168,11 +187,21 @@ export type GetApiSpecsQuery = {
         method: Method;
         operationId: string;
         parameters: Array<{ __typename?: 'ApiParameter'; name: string; example?: string | null; namespace: Array<string>; paramIn: ParameterIn }>;
-        responses: Array<{ __typename?: 'ApiResponse'; code: number; description?: string | null }>;
+        responses: Array<{
+          __typename?: 'ApiResponse';
+          code: number;
+          description?: string | null;
+          contents: Array<{ __typename?: 'HttpContent'; description?: string | null; example?: string | null; mimetype: string; schema: string }>;
+          headers: Array<{ __typename?: 'HttpHeader'; description?: string | null; example?: string | null; name: string; schema: string }>;
+        }>;
       }>;
     }>;
   }>;
 };
+
+export type NotificationsSubscriptionVariables = Exact<{ [key: string]: never }>;
+
+export type NotificationsSubscription = { __typename?: 'Subscription'; notifications: { __typename?: 'Notification'; event: NotificationEvent } };
 
 export const GetApiSpecsDocument = gql`
   query getApiSpecs {
@@ -202,6 +231,18 @@ export const GetApiSpecsDocument = gql`
           responses {
             code
             description
+            contents {
+              description
+              example
+              mimetype
+              schema
+            }
+            headers {
+              description
+              example
+              name
+              schema
+            }
           }
         }
       }
@@ -214,6 +255,24 @@ export const GetApiSpecsDocument = gql`
 })
 export class GetApiSpecsGQL extends Apollo.Query<GetApiSpecsQuery, GetApiSpecsQueryVariables> {
   override document = GetApiSpecsDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
+export const NotificationsDocument = gql`
+  subscription notifications {
+    notifications {
+      event
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class NotificationsGQL extends Apollo.Subscription<NotificationsSubscription, NotificationsSubscriptionVariables> {
+  override document = NotificationsDocument;
 
   constructor(apollo: Apollo.Apollo) {
     super(apollo);
