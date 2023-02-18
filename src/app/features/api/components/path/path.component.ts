@@ -2,9 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ApiPath } from 'src/graphql/generated';
 
 @Component({
-  selector: 'app-api-path',
-  templateUrl: './api-path.component.html',
-  styleUrls: ['./api-path.component.scss'],
+  selector: 'api-path',
+  templateUrl: './path.component.html',
+  styleUrls: ['./path.component.scss'],
 })
 export class ApiPathComponent implements OnInit {
   @Input()

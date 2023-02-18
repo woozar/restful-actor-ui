@@ -3,9 +3,9 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ApiResponse, HttpContent } from 'src/graphql/generated';
 
 @Component({
-  selector: 'app-api-response',
-  templateUrl: './api-response.component.html',
-  styleUrls: ['./api-response.component.scss'],
+  selector: 'api-response',
+  templateUrl: './response.component.html',
+  styleUrls: ['./response.component.scss'],
 })
 export class ApiResponseComponent {
   @Input()

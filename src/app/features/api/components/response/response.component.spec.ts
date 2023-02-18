@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ApiResponseComponent } from './api-response.component';
+import { ApiResponseComponent } from './response.component';
 
 describe('ApiResponseComponent', () => {
   let component: ApiResponseComponent;

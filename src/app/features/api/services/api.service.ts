@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ApiSpec, GetApiSpecsGQL, NotificationsGQL, NotificationsSubscription } from 'src/graphql/generated';
-import { isDefined } from './utilities/is-defined.filter';
+import { isDefined } from '../../../utilities/is-defined.filter';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BackendService {
+export class ApiService {
   constructor(private getApiSpecsGQL: GetApiSpecsGQL, private notifications: NotificationsGQL) {}
 
   public loadApiSpecs(): Observable<ApiSpec[]> {

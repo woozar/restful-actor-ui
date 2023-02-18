@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ApiPathComponent } from './api-path.component';
+import { ApiMethodsComponent } from './methods.component';
 
-describe('ApiPathComponent', () => {
-  let component: ApiPathComponent;
-  let fixture: ComponentFixture<ApiPathComponent>;
+describe('ApiMethodsComponent', () => {
+  let component: ApiMethodsComponent;
+  let fixture: ComponentFixture<ApiMethodsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ApiPathComponent],
+      declarations: [ApiMethodsComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ApiPathComponent);
+    fixture = TestBed.createComponent(ApiMethodsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

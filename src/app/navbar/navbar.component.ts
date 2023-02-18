@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { ApiSpec } from 'src/graphql/generated';
-import { BackendService } from '../backend.service';
-import { loadApis } from '../store/apis.actions';
-import { selectApi } from '../store/selected-api.actions';
+import { ApiService } from '../features/api/services/api.service';
+import { loadApis } from '../features/api/store/apis.actions';
+import { selectApi } from '../features/api/store/selected-api.actions';
 import { StoreModel } from '../store/store.model';
 
 const SELECTED_API = 'selected-api';
@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
 
   public apiSpecs$ = this.store.select('apis');
 
-  constructor(private backend: BackendService, private store: Store<StoreModel>) {
+  constructor(private backend: ApiService, private store: Store<StoreModel>) {
     this.backend.loadApiSpecs();
     this.store.dispatch(loadApis());
   }

@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ApiMethod } from 'src/graphql/generated';
 
 @Component({
-  selector: 'app-api-method',
-  templateUrl: './api-method.component.html',
-  styleUrls: ['./api-method.component.scss'],
+  selector: 'api-method',
+  templateUrl: './method.component.html',
+  styleUrls: ['./method.component.scss'],
 })
-export class ApiMethodComponent implements OnInit {
+export class MethodComponent implements OnInit {
   @Input()
   public method!: ApiMethod;
 

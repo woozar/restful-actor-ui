@@ -13,33 +13,23 @@ import { StoreModule } from '@ngrx/store';
 import { FlexModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { GraphQLModule } from './graphql.module';
+import { GraphQLModule } from './features/graphql/graphql.module';
 import { HttpClientModule } from '@angular/common/http';
-import { apisReducer } from './store/apis.reducer';
 import { NavbarComponent } from './navbar/navbar.component';
-import { selectedApiReducer } from './store/selected-api.reducer';
 import { HomeComponent } from './home/home.component';
 import { notificationsReducer } from './store/notifications.reducer';
-import { ApiPathComponent } from './api-path/api-path.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { ApiPathsComponent } from './api-paths/api-paths.component';
-import { ApiMethodComponent } from './api-method/api-method.component';
-import { ApiMethodsComponent } from './api-methods/api-methods.component';
+import { ApiModule } from './features/api/api.module';
 import { EffectsModule } from '@ngrx/effects';
-import { ApiEffects } from './store/apis.effect';
-import { ApiResponsesComponent } from './api-responses/api-responses.component';
-import { ApiResponseComponent } from './api-response/api-response.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomeComponent, ApiPathComponent, ApiPathsComponent, ApiMethodComponent, ApiMethodsComponent, ApiResponsesComponent, ApiResponseComponent],
+  declarations: [AppComponent, NavbarComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     StoreModule.forRoot({
-      apis: apisReducer,
-      selectedApi: selectedApiReducer,
       notifications: notificationsReducer,
     }),
     MatButtonModule,
@@ -54,8 +44,8 @@ import { ApiResponseComponent } from './api-response/api-response.component';
     GraphQLModule,
     HttpClientModule,
     MatExpansionModule,
-    // EffectsModule,
-    EffectsModule.forRoot([ApiEffects]),
+    ApiModule,
+    EffectsModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
