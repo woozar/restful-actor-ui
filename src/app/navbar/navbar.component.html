@@ -2,12 +2,11 @@
   <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-around center">
     <span>Restful actor</span>
     <div fxFlex></div>
-    <form [formGroup]="form" *ngIf="form">
-      <mat-select formControlName="selectedApi">
-        <mat-option [value]="api" *ngFor="let api of apiSpecs$ | async">{{ api.name }}</mat-option>
+    <div fxFlex>
+      <mat-select [value]="selectedApi$ | async" (selectionChange)="selectedApiChanged($event)">
+        <mat-option [value]="api.id" *ngFor="let api of apiSpecs$ | async">{{ api.name }}</mat-option>
       </mat-select>
-    </form>
+    </div>
     <div fxFlex></div>
-    <button mat-raised-button (click)="subscribe()">subscribe</button>
   </mat-toolbar-row>
 </mat-toolbar>

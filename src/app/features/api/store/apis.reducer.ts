@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { ApiSpec } from 'src/graphql/generated';
-import { loadApisSuccess, clearApis } from './apis.actions';
+
+import { clearApis, loadApisSuccess } from './apis.actions';
 
 export const initialState: ApiSpec[] = [];
 

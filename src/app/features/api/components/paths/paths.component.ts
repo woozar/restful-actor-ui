@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ApiPath } from 'src/graphql/generated';
+import { Path } from 'src/graphql/generated';
 
 @Component({
   selector: 'api-paths',
@@ -8,5 +8,5 @@ import { ApiPath } from 'src/graphql/generated';
 })
 export class ApiPathsComponent {
   @Input()
-  public paths: ApiPath[] = [];
+  public paths: Path[] = [];
 }

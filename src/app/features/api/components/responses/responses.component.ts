@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ApiResponse } from 'src/graphql/generated';
+import { Response } from 'src/graphql/generated';
 
 @Component({
   selector: 'api-responses',
@@ -8,5 +8,5 @@ import { ApiResponse } from 'src/graphql/generated';
 })
 export class ApiResponsesComponent {
   @Input()
-  public responses: ApiResponse[] = [];
+  public responses: Response[] = [];
 }

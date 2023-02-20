@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { ApolloModule, APOLLO_OPTIONS } from 'apollo-angular';
 import { ApolloClientOptions, InMemoryCache, NormalizedCacheObject, split } from '@apollo/client/core';
-import { HttpLink } from 'apollo-angular/http';
-import { getMainDefinition } from '@apollo/client/utilities';
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions';
+import { getMainDefinition } from '@apollo/client/utilities';
+import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
+import { HttpLink } from 'apollo-angular/http';
 import { createClient } from 'graphql-ws';
 
 const host = 'localhost/graphql';

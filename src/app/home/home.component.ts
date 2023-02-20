@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { combineLatest, map } from 'rxjs';
+
 import { StoreModel } from '../store/store.model';
 
 @Component({
@@ -8,8 +10,11 @@ import { StoreModel } from '../store/store.model';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  public selectedApi$ = this.store.select('selectedApi');
-  public notifications$ = this.store.select('notifications');
+  // public notifications$ = this.store.select('notifications');
+
+  public selectedApi$ = combineLatest([this.store.select('selectedApi'), this.store.select('apis')]).pipe(
+    map(([selectedApi, apis]) => apis.find((api) => api.id === selectedApi))
+  );
 
   constructor(private store: Store<StoreModel>) {}
 }

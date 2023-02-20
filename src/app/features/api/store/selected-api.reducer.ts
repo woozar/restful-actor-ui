@@ -1,10 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { ApiSpec } from 'src/graphql/generated';
-import { selectApi } from './selected-api.actions';
 
-export const initialState: ApiSpec | null = null;
+import { loadSelectedApiSuccess, selectApi } from './selected-api.actions';
 
-export const selectedApiReducer = createReducer<ApiSpec | null>(
+export const initialState: string | undefined = undefined;
+
+export const selectedApiReducer = createReducer<string | undefined>(
   initialState,
-  on(selectApi, (_state, { selected }) => selected)
+  on(selectApi, (_state, { selected }) => selected),
+  on(loadSelectedApiSuccess, (_state, { selectedApiId }) => selectedApiId)
 );

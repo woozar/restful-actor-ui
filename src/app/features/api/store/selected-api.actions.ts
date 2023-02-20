@@ -1,4 +1,6 @@
 import { createAction } from '@ngrx/store';
-import { ApiSpec } from 'src/graphql/generated';
 
-export const selectApi = createAction('[Apis] Select', (selected: ApiSpec | null) => ({ selected }));
+export const loadSelectedApi = createAction('[Apis] load selected api');
+export const loadSelectedApiSuccess = createAction('[Apis] load selected api success', (selectedApiId: string) => ({ selectedApiId }));
+export const loadSelectedApiFailed = createAction('[Apis] load selected api failed');
+export const selectApi = createAction('[Apis] Select', (selected?: string) => ({ selected }));

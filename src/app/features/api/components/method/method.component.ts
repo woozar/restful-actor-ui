@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ApiMethod } from 'src/graphql/generated';
+import { Method } from 'src/graphql/generated';
 
 @Component({
   selector: 'api-method',
@@ -8,11 +8,7 @@ import { ApiMethod } from 'src/graphql/generated';
 })
 export class MethodComponent implements OnInit {
   @Input()
-  public method!: ApiMethod;
-
-  public get background(): string {
-    return 'darkred';
-  }
+  public method!: Method;
 
   ngOnInit(): void {
     if (!this.method) throw new Error('Input method must not be undefined');

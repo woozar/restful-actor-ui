@@ -1,15 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ApiResponse, HttpContent } from 'src/graphql/generated';
+import { HttpContent, Response } from 'src/graphql/generated';
 
 @Component({
   selector: 'api-response',
   templateUrl: './response.component.html',
   styleUrls: ['./response.component.scss'],
 })
-export class ApiResponseComponent {
+export class ApiResponseComponent implements OnInit {
   @Input()
-  public response!: ApiResponse;
+  public response!: Response;
 
   public form?: FormGroup<{
     content: FormControl<HttpContent | null>;

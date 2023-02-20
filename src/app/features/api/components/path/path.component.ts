@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ApiPath } from 'src/graphql/generated';
+import { Path } from 'src/graphql/generated';
 
 @Component({
   selector: 'api-path',
@@ -8,7 +8,7 @@ import { ApiPath } from 'src/graphql/generated';
 })
 export class ApiPathComponent implements OnInit {
   @Input()
-  public path!: ApiPath;
+  public path!: Path;
 
   ngOnInit(): void {
     if (!this.path) throw new Error('Input path must not be undefined');
